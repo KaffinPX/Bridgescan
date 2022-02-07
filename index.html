@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgescan</title>
+    <script src="app/assets/vite/vite.js"></script>
+    <script src="app/assets/vite/vite-ws.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.7.0/dist/web3.min.js"></script>
+    <script src="app/assets/polyfill/buffer.js"></script>
+    <script src="https://unpkg.com/bulma-toast"></script>
+
+    <script src="./app/channels/data.js"></script>
+    <script src="./app/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="./app/assets/bulma/bulma.css">
+    <link rel="stylesheet" href="./app/assets/bulma/pageloader.css">
+
+    <style>
+      body {
+        background-color: rgb(42, 42, 46);
+        min-height: 100vh;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+
+      .margin-20 {
+        margin-top: 25px;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <div id="loader" class="pageloader is-link is-active"><span class="title" id="loadingDesc">Bridgescan</span></div>
+
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="logo">
+          <img src="./app/assets/logo.png" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbar" class="navbar-menu">
+        <input id="searchAddress" class="navbar-item input is-medium is-dark" style="height: 100%; width: 90%;" placeholder="Search an account">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-dark" id="changeNetwork">
+                <strong id="changeNetwork_name">Testnet</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="block">
+      <section class="hero is-link" id="banner">
+        <div class="hero-body">
+          <p class="title" id="banner_title">
+            Bridgescan
+          </p>
+          <p class="subtitle" id="banner_subtitle">
+            Everything you need to explore Vite decentralised bridge ViteBridge.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <center>
+      <div class="block" id="txsSection">
+        <ul style="width: 90%;" class="block-list has-radius is-large is-outlined is-info is-centered is-unselectable">
+          <li style="font-size: larger;">
+            &#8205;
+            <div style="width: 20%; float: left;">From</div>
+            <div style="width: 20%; float: left;">To</div>
+            <div style="width: 12%; float: left;">Token</div>
+            <div style="width: 12%; float: left;">Amount</div>
+            <div style="width: 12%; float: left;">Status</div>
+            <div style="width: 12%; float: left;">Time</div>
+            <div style="width: 12%; float: left;">Fee</div>
+          </li>
+        </ul>
+
+
+        <div class="margin-20"></div>
+
+        <ul id="bridgingTxs" style="width: 90%;" class="block-list has-radius is-large is-info is-centered"></ul>
+      </div>
+    </center>
+  </body>
+
+</html>
