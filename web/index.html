@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridgescan</title>
+    <script src="https://unpkg.com/bulma-toast"></script>
+
+    <script src="./app/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="./app/assets/bulma/bulma.css">
+    <link rel="stylesheet" href="./app/assets/bulma/pageloader.css">
+
+    <style>
+      body {
+        background-color: rgb(42, 42, 46);
+        min-height: 100vh;
+        padding: 1px;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 30;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+      }
+      
+      .modal-content {
+        margin: 2% auto;
+        padding: 20px;
+        width: 80%;
+      }
+
+      .margin-20 {
+        margin-top: 25px;
+      }
+
+      .loading-bar {
+        z-index: 31;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: transparent;
+        overflow: hidden;
+      }
+
+      .loading-bar-active::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+        height: 5px;
+        background-color: hsl(204, 86%, 53%)	;
+        box-shadow: 10px 0 30px 15px hsl(204, 86%, 53%), -10px 0 30px 15px hsl(204, 86%, 53%)	;
+        animation: moveLoadBar 1s cubic-bezier(0.09, 0.89, 0.7, 0.71) infinite;
+      }
+
+      @keyframes moveLoadBar {
+        0% {
+          left: -10%;
+        }
+        100% {
+          left: 110%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="loader" class="pageloader is-link is-active"><span class="title" id="loadingDesc">Bridgescan</span></div>
+
+    <div id="loading-bar" class="loading-bar"></div>
+
+    <nav class="navbar is-info">
+      <div class="navbar-brand">
+        <a class="navbar-item" id="logo">
+          <img src="./app/assets/logo.png" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbar" class="navbar-menu">
+        <input id="searchAddress" class="navbar-item input is-medium is-dark" style="height: 100%; width: 90%;" placeholder="Search an account">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-dark" id="changeNetwork">
+                <strong id="changeNetwork_name">Testnet</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="block">
+      <section class="hero is-link" id="banner">
+        <div class="hero-body" id="hero_body">
+          <p class="title">
+            Bridgescan
+          </p>
+          <p class="subtitle" id="banner_subtitle">
+            Everything you need to explore Vite decentralised bridge ViteBridge.
+          </p>
+        </div>
+        <div id="banner_body">
+            
+        </div>
+      </section>
+    </div>
+
+    <div id="transaction" class="modal">
+      <div class="modal-content">
+        <div class="container is-max-desktop">
+          <div id="transactionContent" class="notification is-link">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <center>
+      <div class="block" id="txsSection">
+        <ul style="width: 90%;" class="block-list has-radius is-large is-outlined is-info is-centered is-unselectable">
+          <li style="font-size: larger;">
+            &#8205;
+            <div style="width: 20%; float: left;">From</div>
+            <div style="width: 20%; float: left;">To</div>
+            <div style="width: 12%; float: left;">Token</div>
+            <div style="width: 12%; float: left;">Amount</div>
+            <div style="width: 12%; float: left;">Status</div>
+            <div style="width: 12%; float: left;">Time</div>
+            <div style="width: 12%; float: left;">Fee</div>
+          </li>
+        </ul>
+
+        <div class="margin-20"></div>
+
+        <ul id="bridgingTxs" style="width: 90%;" class="block-list has-radius is-large is-info is-centered"></ul>
+      </div>
+    </center>
+  </body>
+
+</html>

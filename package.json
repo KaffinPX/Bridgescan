@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@vite/vitejs": "2.3.14",
+    "@vite/vitejs-http": "2.3.14",
+    "@vite/vitejs-ws": "2.3.14",
+    "lmdb": "^2.2.1",
+    "web3": "^1.7.0",
+    "ws": "^8.5.0"
+  }
+}
