@@ -6,8 +6,9 @@
 * Listen bridging requests.
 * Fast & responsive.
 # Setup
-* Install and open index.html or upload to any website.
+* Install files and extract to any file.
+* Install modules by ``npm install``
+* Open backend and wait for sync.
+* Open website and start exploring Vitebridge.
 # To-Do
-* Better searching.
-* Transaction details full page.
 * Mainnet support(After mainnet channel contract).
